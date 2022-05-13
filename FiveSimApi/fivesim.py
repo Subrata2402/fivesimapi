@@ -17,42 +17,22 @@ class NumberApi(object):
         return await self.fetch("GET", "/user/profile")
         
     async def order_history(self, category: str, limit = None, offset = None, order = None, reverse = None):
-        params = {
-            "category": category, # hosting or activation
-            "limit": limit,
-            "offset": offset,
-            "order": order,
-            "reverse": reverse # True or False
-        }
+        params = {"category": category, "limit": limit, "offset": offset, "order": order, "reverse": reverse}
         return await self.fetch("GET", "/user/orders", params)
         
     async def payment_history(self, limit = None, offset = None, order = None, reverse = None):
-        params = {
-            "limit": limit,
-            "offset": offset,
-            "order": order,
-            "reverse": reverse # True or False
-        }
+        params = {"limit": limit, "offset": offset, "order": order, "reverse": reverse}
         return await self.fetch("GET", "/user/payments", params)
         
     async def product_details(self, country: str = "any", operator: str = "any"):
         return await self.fetch("GET", "/guest/products/{}/{}".format(country, operator))
         
     async def get_prices(self, country: str = None, product: str = None):
-        params = {
-            "country": country,
-            "product": product
-        }
+        params = {"country": country, "product": product}
         return await self.fetch("GET", "/guest/prices", params)
 
     async def buy_activation_number(self, country: str, operator: str, product: str, forwarding = None, number = None, reuse = None, voice = None, ref = None):
-        params = {
-            "forwarding": forwarding,
-            "number": number,
-            "reuse": reuse,
-            "voice": voice,
-            "ref": ref
-        }
+        params = {"forwarding": forwarding, "number": number, "reuse": reuse, "voice": voice, "ref": ref}
         return await self.fetch("GET", "/user/buy/activation/{}/{}/{}".format(country, operator, product))
         
     async def buy_hosting_number(self, country: str, operator: str, product: str):
@@ -83,5 +63,22 @@ class NumberApi(object):
         return await self.fetch("GET", "/user/payment/crypto2/rates")
         
     async def get_deposit_address(self, amount: str, currency: str, address_type: str = None):
-        data = 
+        data = {"amount": amount, "currency": currency, "address_type": address_type}
         return await self.fetch("POST", "/user/payment/crypto2/invoice", data = data)
+        
+    async def get_notifications(self, lang: str):
+        return await self.fetch("GET", "/guest/flash/{}".format(lang))
+        
+    async def vendor_stats(self):
+        return await self.fetch("GET", "/user/vendor")
+        
+    async def wallets_reserve(self):
+        return await self.fetch("GET", "/vendor/wallets")
+        
+    async def vendor_orders_history(self, category: str, limit: str = None, offset: str = None, order: str = None, reverse: str = None):
+        params = {"category": category, "limit": limit, "offset": offset, "order": order, "reverse": reverse}
+        return await self.fetch("GET", "/vendor/orders", params = params)
+        
+    async def vendor_payments_history(self, limit: str = None, offset: str = None, order: str = None, reverse: str = None):
+        params = {"limit": limit, "offset": offset, "order": order, "reverse": reverse}
+        return await self.fetch("GET", "/vendor/payments", params = params)
