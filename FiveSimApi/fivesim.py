@@ -38,11 +38,7 @@ class NumberApi(object):
         return await self.fetch("GET", "/payments", params)
         
     async def product_details(self, country: str = "any", operator: str = "any"):
-        params = {
-            "country": country,
-            "operator": operator
-        }
-        return await self.fetch("GET", "/products", params)
+        return await self.fetch("GET", "/products/{}/{}".format(country, operator))
         
     async def get_prices(self, country: str = None, product: str = None):
         params = {
