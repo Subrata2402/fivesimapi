@@ -24,7 +24,7 @@ class NumberApi(object):
             "limit": limit,
             "offset": offset,
             "order": order,
-            "reverse": reverse
+            "reverse": reverse # True or False
         }
         return await self.fetch("GET", "/orders", params)
         
@@ -33,6 +33,18 @@ class NumberApi(object):
             "limit": limit,
             "offset": offset,
             "order": order,
-            "reverse": reverse
+            "reverse": reverse # True or False
         }
         return await self.fetch("GET", "/payments", params)
+        
+    async def product_details(self, country: str = "any", operator: str = "any"):
+        params = {
+            "country": country,
+            "operator": operator
+        }
+        return await self.fetch("GET", "/products", params)
+        
+    async def get_prices(self):
+        return await self.fetch("GET", "/prices")
+        
+    async def
