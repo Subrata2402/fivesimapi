@@ -82,3 +82,7 @@ class NumberApi(object):
     async def vendor_payments_history(self, limit: str = None, offset: str = None, order: str = None, reverse: str = None):
         params = {"limit": limit, "offset": offset, "order": order, "reverse": reverse}
         return await self.fetch("GET", "/vendor/payments", params = params)
+        
+    async def create_payouts(self, receiver: str, method: str, amount: str, fee: str):
+        data = {"receiver": receiver, "method": method, "amount": amount, "fee": fee}
+        return await self.fetch("POST", "/vendor/withdraw", data = data)
