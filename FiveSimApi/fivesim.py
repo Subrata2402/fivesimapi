@@ -28,4 +28,11 @@ class NumberApi(object):
         }
         return await self.fetch("GET", "/orders", params)
         
-    async def
+    async def payment_history(self, limit = None, offset = None, order = None, reverse = None):
+        params = {
+            "limit": limit,
+            "offset": offset,
+            "order": order,
+            "reverse": reverse
+        }
+        return await self.fetch("GET", "/payments", params)
