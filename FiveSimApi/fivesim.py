@@ -6,10 +6,8 @@ class NumberApi(object):
         self.api_url = "https://5sim.net/v1"
         
     async def fetch(self, method = "GET", function = "", params = None, headers = None, data = None):
-        headers = {
-            "Authorization": "Bearer " + self.api_key,
-            "Accept": "application/json"
-        }
+        headers = {"Accept": "application/json"}
+        if self.api_key: headers["Authorization"] = self.api_key
         client_session = aiohttp.ClientSession()
         response = await client_session.request(method = method, url = self.api_url + function, params = None, headers = headers, data = data)
         content = await response.text()
@@ -46,3 +44,15 @@ class NumberApi(object):
             "product": product
         }
         return await self.fetch("GET", "/guest/prices", params)
+
+    async def buy_activation_number(self, country: str, operator: str, product: str, forwarding = None, number = None, reuse = None, voice = None, ref = None):
+        params = {
+            "forwarding": forwarding,
+            "number": number,
+            "reuse": reuse,
+            "voice": voice,
+            "ref": ref
+        }
+        return await self.fetch("GET", "/user/buy/activation/{}/{}/{}".format(country, operator, product))
+        
+    
