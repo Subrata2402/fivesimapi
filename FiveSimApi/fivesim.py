@@ -74,32 +74,41 @@ class NumberApi(object):
         return await self.fetch("GET", "/user/sms/inbox/{}".format(id))
         
     async def crypto_rates(self):
+        """Return rates of cryptocurrencies."""
         return await self.fetch("GET", "/user/payment/crypto2/rates")
         
     async def get_deposit_address(self, amount: str, currency: str, address_type: str = None):
+        """Return address to crypto payment."""
         data = {"amount": amount, "currency": currency, "address_type": address_type}
         return await self.fetch("POST", "/user/payment/crypto2/invoice", data = data)
         
     async def get_notifications(self, lang: str):
+        """Get a flash notification."""
         return await self.fetch("GET", "/guest/flash/{}".format(lang))
         
     async def vendor_stats(self):
+        """Return Vendor statistics."""
         return await self.fetch("GET", "/user/vendor")
         
     async def wallets_reserve(self):
+        """Available reserves currency for partner."""
         return await self.fetch("GET", "/vendor/wallets")
         
     async def vendor_orders_history(self, category: str, limit: str = None, offset: str = None, order: str = None, reverse: str = None):
+        """Provides vendor's orders history by chosen category."""
         params = {"category": category, "limit": limit, "offset": offset, "order": order, "reverse": reverse}
         return await self.fetch("GET", "/vendor/orders", params = params)
         
     async def vendor_payments_history(self, limit: str = None, offset: str = None, order: str = None, reverse: str = None):
+        """Provides vendor's payments history."""
         params = {"limit": limit, "offset": offset, "order": order, "reverse": reverse}
         return await self.fetch("GET", "/vendor/payments", params = params)
         
     async def create_payouts(self, receiver: str, method: str, amount: str, fee: str):
+        """Create payouts for a partner."""
         data = {"receiver": receiver, "method": method, "amount": amount, "fee": fee}
         return await self.fetch("POST", "/vendor/withdraw", data = data)
         
     async def countries_list(self):
+        """Returns a list of countries with available operators for purchase."""
         return await self.fetch("GET", "/guest/countries")
