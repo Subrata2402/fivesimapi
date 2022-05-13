@@ -50,21 +50,27 @@ class NumberApi(object):
         return await self.fetch("GET", "/user/reuse/{}/{}".format(product, number))
     
     async def check_order(self, id):
+        """Check order history of a number."""
         return await self.fetch("GET", "/user/check/{}".format(id))
         
     async def get_sms(self, id):
+        """Get sms of a number."""
         return await self.fetch("GET", "/user/check/{}".format(id))
         
     async def finish_order(self, id):
+        """Finish a order by order
         return await self.fetch("GET", "/user/finish/{}".format(id))
         
     async def cancel_order(self, id):
+        """Cancel a order by order's id."""
         return await self.fetch("GET", "/user/cancel/{}".format(id))
         
     async def ban_order(self, id):
+        """Ban a order by order's id."""
         return await self.fetch("GET", "/user/ban/{}".format(id))
     
     async def sms_inbox_list(self, id):
+        """Get SMS inbox list by order's id."""
         return await self.fetch("GET", "/user/sms/inbox/{}".format(id))
         
     async def crypto_rates(self):
