@@ -14,3 +14,12 @@ class NumberApi(object):
         response = await client_session.request(method = method, url = self.api_url + function, params = None, headers = headers, data = data)
         content = await response.text()
         return json.loads(content)
+        
+    async def get_profile(self):
+        return await self.fetch("GET", "/profile")
+        
+    async def order_history(self, category: str, limit = None, ):
+        params = {
+            "category": category, # hosting or activation
+        }
+        return await self.fetch("GET", "/orders")
