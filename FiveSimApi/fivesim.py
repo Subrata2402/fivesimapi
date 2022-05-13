@@ -61,4 +61,12 @@ class NumberApi(object):
     async def re_buy_number(self, product, number):
         return await self.fetch("GET", "/user/reuse/{}/{}".format(product, number))
     
-    async def
+    async def check_order(self, id):
+        return await self.fetch("GET", "/user/check/{}".format(id))
+        
+    async def get_sms(self, id):
+        return await self.fetch("GET", "/user/check/{}".format(id))
+        
+    async def finish_order(self, id):
+        return await self.fetch("GET", "/user/finish/{}".format(id))
+        
