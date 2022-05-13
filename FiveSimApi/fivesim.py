@@ -46,5 +46,3 @@ class NumberApi(object):
             "product": product
         }
         return await self.fetch("GET", "/prices", params)
-        
-    async def 
