@@ -86,3 +86,6 @@ class NumberApi(object):
     async def create_payouts(self, receiver: str, method: str, amount: str, fee: str):
         data = {"receiver": receiver, "method": method, "amount": amount, "fee": fee}
         return await self.fetch("POST", "/vendor/withdraw", data = data)
+        
+    async def countries_list(self):
+        return await self.fetch("GET", "/guest/countries")
