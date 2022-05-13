@@ -8,10 +8,10 @@ class NumberApi(object):
     async def fetch(self, method = "GET", function = "", params = None, headers = None, data = None):
         headers = {"Accept": "application/json"}
         if self.api_key: headers["Authorization"] = self.api_key
-        client_session = aiohttp.ClientSession()
-        response = await client_session.request(method = method, url = self.api_url + function, params = None, headers = headers, data = data)
-        content = await response.text()
-        return json.loads(content)
+        async with aiohttp.ClientSession() as client_session:
+            response = await client_session.request(method = method, url = self.api_url + function, params = None, headers = headers, data = data)
+            content = await response.json()
+            return content
         
     async def get_profile(self):
         return await self.fetch("GET", "/user/profile")
@@ -78,3 +78,4 @@ class NumberApi(object):
     
     async def sms_inbox_list(self, id):
         return await self.fetch("GET", "/user/sms/inbox/{}".format(id))
+        
