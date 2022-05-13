@@ -44,7 +44,11 @@ class NumberApi(object):
         }
         return await self.fetch("GET", "/products", params)
         
-    async def get_prices(self):
-        return await self.fetch("GET", "/prices")
+    async def get_prices(self, country: str = None, product: str = None):
+        params = {
+            "country": country,
+            "product": product
+        }
+        return await self.fetch("GET", "/prices", params)
         
-    async def
+    async def 
