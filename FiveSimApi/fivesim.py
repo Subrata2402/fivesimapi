@@ -72,3 +72,9 @@ class NumberApi(object):
         
     async def cancel_order(self, id):
         return await self.fetch("GET", "/user/cancel/{}".format(id))
+        
+    async def ban_order(self, id):
+        return await self.fetch("GET", "/user/ban/{}".format(id))
+    
+    async def sms_inbox_list(self, id):
+        return await self.fetch("GET", "/user/sms/inbox/{}".format(id))
