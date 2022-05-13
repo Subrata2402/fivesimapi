@@ -16,11 +16,11 @@ class NumberApi(object):
     async def get_profile(self):
         return await self.fetch("GET", "/user/profile")
         
-    async def order_history(self, category: str, limit = None, offset = None, order = None, reverse = None):
+    async def order_history(self, category: str, limit: str = None, offset: str = None, order: str = None, reverse: str = None):
         params = {"category": category, "limit": limit, "offset": offset, "order": order, "reverse": reverse}
         return await self.fetch("GET", "/user/orders", params)
         
-    async def payment_history(self, limit = None, offset = None, order = None, reverse = None):
+    async def payment_history(self, limit: str = None, offset: str = None, order: str = None, reverse: str = None):
         params = {"limit": limit, "offset": offset, "order": order, "reverse": reverse}
         return await self.fetch("GET", "/user/payments", params)
         
@@ -31,14 +31,14 @@ class NumberApi(object):
         params = {"country": country, "product": product}
         return await self.fetch("GET", "/guest/prices", params)
 
-    async def buy_activation_number(self, country: str, operator: str, product: str, forwarding = None, number = None, reuse = None, voice = None, ref = None):
+    async def buy_activation_number(self, country: str, operator: str, product: str, forwarding: str = None, number: str = None, reuse: str = None, voice: str = None, ref: str = None):
         params = {"forwarding": forwarding, "number": number, "reuse": reuse, "voice": voice, "ref": ref}
         return await self.fetch("GET", "/user/buy/activation/{}/{}/{}".format(country, operator, product))
         
     async def buy_hosting_number(self, country: str, operator: str, product: str):
         return await self.fetch("GET", "/user/buy/hosting/{}/{}/{}".format(country, operator, product))
         
-    async def re_buy_number(self, product, number):
+    async def re_buy_number(self, product: str, number: str):
         return await self.fetch("GET", "/user/reuse/{}/{}".format(product, number))
     
     async def check_order(self, id):
