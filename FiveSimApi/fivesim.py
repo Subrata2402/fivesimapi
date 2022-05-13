@@ -70,3 +70,5 @@ class NumberApi(object):
     async def finish_order(self, id):
         return await self.fetch("GET", "/user/finish/{}".format(id))
         
+    async def cancel_order(self, id):
+        return await self.fetch("GET", "/user/cancel/{}".format(id))
