@@ -18,8 +18,14 @@ class NumberApi(object):
     async def get_profile(self):
         return await self.fetch("GET", "/profile")
         
-    async def order_history(self, category: str, limit = None, ):
+    async def order_history(self, category: str, limit = None, offset = None, order = None, reverse = None):
         params = {
             "category": category, # hosting or activation
+            "limit": limit,
+            "offset": offset,
+            "order": order,
+            "reverse": reverse
         }
-        return await self.fetch("GET", "/orders")
+        return await self.fetch("GET", "/orders", params)
+        
+    async def
