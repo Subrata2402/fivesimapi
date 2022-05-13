@@ -23,24 +23,30 @@ class NumberApi(object):
         return await self.fetch("GET", "/user/orders", params)
         
     async def payment_history(self, limit: str = None, offset: str = None, order: str = None, reverse: str = None):
+        """Provides payments history."""
         params = {"limit": limit, "offset": offset, "order": order, "reverse": reverse}
         return await self.fetch("GET", "/user/payments", params)
         
     async def product_details(self, country: str = "any", operator: str = "any"):
+        """To receive the name, the price, quantity of all products, available to buy."""
         return await self.fetch("GET", "/guest/products/{}/{}".format(country, operator))
         
     async def get_prices(self, country: str = None, product: str = None):
+        """Returns product prices by country and specific product."""
         params = {"country": country, "product": product}
         return await self.fetch("GET", "/guest/prices", params)
 
     async def buy_activation_number(self, country: str, operator: str, product: str, forwarding: str = None, number: str = None, reuse: str = None, voice: str = None, ref: str = None):
+        """Buy a activation number."""
         params = {"forwarding": forwarding, "number": number, "reuse": reuse, "voice": voice, "ref": ref}
         return await self.fetch("GET", "/user/buy/activation/{}/{}/{}".format(country, operator, product))
         
     async def buy_hosting_number(self, country: str, operator: str, product: str):
+        """Buy a hosting number."""
         return await self.fetch("GET", "/user/buy/hosting/{}/{}/{}".format(country, operator, product))
         
     async def re_buy_number(self, product: str, number: str):
+        """Buy again a old number."""
         return await self.fetch("GET", "/user/reuse/{}/{}".format(product, number))
     
     async def check_order(self, id):
