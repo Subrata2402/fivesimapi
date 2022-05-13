@@ -55,4 +55,10 @@ class NumberApi(object):
         }
         return await self.fetch("GET", "/user/buy/activation/{}/{}/{}".format(country, operator, product))
         
+    async def buy_hosting_number(self, country: str, operator: str, product: str):
+        return await self.fetch("GET", "/user/buy/hosting/{}/{}/{}".format(country, operator, product))
+        
+    async def re_buy_number(self, product, number):
+        return await self.fetch("GET", "/user/reuse/{}/{}".format(product, number))
     
+    async def
