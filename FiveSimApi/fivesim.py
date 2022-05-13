@@ -14,9 +14,11 @@ class NumberApi(object):
             return content
         
     async def get_profile(self):
+        """Provides profile data: email, balance and rating."""
         return await self.fetch("GET", "/user/profile")
         
     async def order_history(self, category: str, limit: str = None, offset: str = None, order: str = None, reverse: str = None):
+        """Provides orders history by choosen category."""
         params = {"category": category, "limit": limit, "offset": offset, "order": order, "reverse": reverse}
         return await self.fetch("GET", "/user/orders", params)
         
