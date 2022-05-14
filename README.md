@@ -3,6 +3,7 @@ A modern, easy to use, and async API wrapper for 5sim.net in Python.
 
 ### Installation
 Before proceeding, you should register an account on 5sim.net and generate a [Api key](https://5sim.net/settings/security) to use.
+
 ```pip install fivesimapi```
 
 ### Example Code
