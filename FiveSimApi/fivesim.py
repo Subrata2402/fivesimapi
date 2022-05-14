@@ -1,6 +1,6 @@
 import aiohttp, asyncio, json
 
-class NumberApi(object):
+class FiveSim(object):
     def __init__(self, api_key: str = None):
         self.api_key = api_key
         self.api_url = "https://5sim.net/v1"
