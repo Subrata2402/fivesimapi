@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="fivesimapi",
-    version="0.1",
+    version="0.1.1",
     author="Subrata",
     author_email="",
     description="Five sim api",
