@@ -40,7 +40,7 @@ class FiveSim(object):
         return await self.fetch("GET", "/guest/products/{}/{}".format(country, operator))
         
     async def get_prices(self):
-        """Returns product prices by country and specific product."""
+        """Return prices of products of countries."""
         return await self.fetch("GET", "/guest/prices")
 
     async def get_prices_by_country(self, country: str):
