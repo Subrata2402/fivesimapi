@@ -34,7 +34,7 @@ class FiveSim(object):
     async def get_prices(self, country: str = None, product: str = None):
         """Returns product prices by country and specific product."""
         params = {"country": country, "product": product}
-        return await self.fetch("GET", "/guest/prices", params)
+        return await self.fetch("GET", "/guest/prices", params = params)
 
     async def buy_activation_number(self, country: str, operator: str, product: str, forwarding: str = None, number: str = None, reuse: str = None, voice: str = None, ref: str = None):
         """Buy a activation number."""
