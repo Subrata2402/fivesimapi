@@ -1,5 +1,4 @@
-import aiohttp, asyncio, json
-from .exceptions import *
+import aiohttp
 
 class FiveSim(object):
     def __init__(self, api_key: str = None):
