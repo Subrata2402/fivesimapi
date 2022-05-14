@@ -11,9 +11,14 @@ class FiveSim(object):
         async with aiohttp.ClientSession() as client_session:
             response = await client_session.request(method = method, url = self.api_url + function, params = None, headers = headers, data = data)
             if response.status == 401:
-                raise InvalidApiKey("Un"
-            content = await response.text()
-            return content
+                raise InvalidApiKey
+            elif response.status == 400:
+                raise InvalidInput
+            elif response.status == 200:
+                content = await response.text()
+                return json.loads(content)
+            else:
+                raise response.text
         
     async def get_profile(self):
         """Provides profile data: email, balance and rating."""
