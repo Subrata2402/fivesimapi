@@ -60,3 +60,23 @@ await client.buy_hosting_number(country, operator, product)
 # Buy again a old number.
 await client.re_buy_number(product, number)
 ```
+### Order Management
+```python
+# Check order history of a number by order's id..
+await client.check_order(order_id)
+
+# Get sms of a number by order's id.
+await client.get_sms(order_id)
+
+# Finish a order by order's id.
+await client.finish_order(order_id)
+
+# Cancel a order by order's id.
+await client.cancel_order(order_id)
+
+# Ban a order by order's id.
+await client.ban_order(order_id)
+
+# Provides sms inbox list by order's id.
+await client.sms_inbox_list(order_id)
+```
