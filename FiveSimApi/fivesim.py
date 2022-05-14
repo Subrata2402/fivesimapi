@@ -10,7 +10,7 @@ class FiveSim(object):
         if self.api_key: headers["Authorization"] = self.api_key
         async with aiohttp.ClientSession() as client_session:
             response = await client_session.request(method = method, url = self.api_url + function, params = None, headers = headers, data = data)
-            content = await response.json()
+            content = await response.text()
             return content
         
     async def get_profile(self):
