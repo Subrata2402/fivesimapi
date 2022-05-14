@@ -5,10 +5,10 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="fivesimapi",
-    version="0.1.3",
+    version="0.1.4",
     author="Subrata",
     author_email="",
-    description="Five sim api",
+    description="A python Api wrapper of 5sim.net",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/Subrata2402/fivesimapi",
