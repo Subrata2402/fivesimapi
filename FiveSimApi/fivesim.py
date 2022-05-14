@@ -1,4 +1,4 @@
-import aiohttp, asyncio, json, requests, bs4
+import aiohttp, asyncio, json
 
 class NumberApi(object):
     def __init__(self, api_key: str = None):
