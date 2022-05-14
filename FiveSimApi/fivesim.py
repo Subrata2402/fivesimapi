@@ -68,27 +68,27 @@ class FiveSim(object):
         """Buy again a old number."""
         return await self.fetch("GET", "/user/reuse/{}/{}".format(product, number))
     
-    async def check_order(self, id):
+    async def check_order(self, id: str):
         """Check order history of a number."""
         return await self.fetch("GET", "/user/check/{}".format(id))
         
-    async def get_sms(self, id):
+    async def get_sms(self, id: str):
         """Get sms of a number."""
         return await self.fetch("GET", "/user/check/{}".format(id))
         
-    async def finish_order(self, id):
+    async def finish_order(self, id: str):
         """Finish a order by order."""
         return await self.fetch("GET", "/user/finish/{}".format(id))
         
-    async def cancel_order(self, id):
+    async def cancel_order(self, id: str):
         """Cancel a order by order's id."""
         return await self.fetch("GET", "/user/cancel/{}".format(id))
         
-    async def ban_order(self, id):
+    async def ban_order(self, id: str):
         """Ban a order by order's id."""
         return await self.fetch("GET", "/user/ban/{}".format(id))
     
-    async def sms_inbox_list(self, id):
+    async def sms_inbox_list(self, id: str):
         """Get SMS inbox list by order's id."""
         return await self.fetch("GET", "/user/sms/inbox/{}".format(id))
         
@@ -113,7 +113,7 @@ class FiveSim(object):
         """Available reserves currency for partner."""
         return await self.fetch("GET", "/vendor/wallets")
         
-    async def vendor_orders_history(self, category: str, limit: str = None, offset: str = None, order: str = None, reverse: str = None):
+    async def vendor_orders_history(self, category: str):
         """Provides vendor's orders history by chosen category."""
         #params = {"category": category, "limit": limit, "offset": offset, "order": order, "reverse": reverse}
         return await self.fetch("GET", "/vendor/orders?category={}".format(category))
