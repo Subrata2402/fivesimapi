@@ -8,7 +8,7 @@ class FiveSim(object):
         
     async def fetch(self, method = "GET", function = "", params = None, headers = None, data = None):
         headers = {"Accept": "application/json"}
-        if self.api_key: headers["Authorization"] = self.api_key
+        if self.api_key and "guest" not in function: headers["Authorization"] = self.api_key
         async with aiohttp.ClientSession() as client_session:
             response = await client_session.request(method = method, url = self.api_url + function, params = None, headers = headers, data = data)
             if response.status == 401:
@@ -27,23 +27,30 @@ class FiveSim(object):
         
     async def order_history(self, category: str, limit: str = None, offset: str = None, order: str = None, reverse: str = None):
         """Provides orders history by choosen category."""
-        params = {"category": category, "limit": limit, "offset": offset, "order": order, "reverse": reverse}
-        return await self.fetch("GET", "/user/orders", params)
+        #params = {"category": category, "limit": limit, "offset": offset, "order": order, "reverse": reverse}
+        return await self.fetch("GET", "/user/orders?category={}".format(category))
         
     async def payment_history(self, limit: str = None, offset: str = None, order: str = None, reverse: str = None):
         """Provides payments history."""
-        params = {"limit": limit, "offset": offset, "order": order, "reverse": reverse}
-        return await self.fetch("GET", "/user/payments", params)
+        #params = {"limit": limit, "offset": offset, "order": order, "reverse": reverse}
+        return await self.fetch("GET", "/user/payments")
         
     async def product_details(self, country: str = "any", operator: str = "any"):
         """To receive the name, the price, quantity of all products, available to buy."""
         return await self.fetch("GET", "/guest/products/{}/{}".format(country, operator))
         
-    async def get_prices(self, country: str = None, product: str = None):
+    async def get_prices(self):
         """Returns product prices by country and specific product."""
-        params = {"country": country, "product": product}
-        return await self.fetch("GET", "/guest/prices", params = params)
+        return await self.fetch("GET", "/guest/prices")
 
+    async def get_prices_by_country(self, country: str):
+        """Returns product prices by country and specific product."""
+        return await self.fetch("GET", "/guest/prices?country={}".format(country))
+    
+    async def get_prices_by_product(self, product: str):
+        """Returns product prices by country and specific product."""
+        return await self.fetch("GET", "/guest/prices?product={}".format(product))
+    
     async def buy_activation_number(self, country: str, operator: str, product: str, forwarding: str = None, number: str = None, reuse: str = None, voice: str = None, ref: str = None):
         """Buy a activation number."""
         params = {"forwarding": forwarding, "number": number, "reuse": reuse, "voice": voice, "ref": ref}
