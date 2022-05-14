@@ -12,9 +12,9 @@ class FiveSim(object):
         async with aiohttp.ClientSession() as client_session:
             response = await client_session.request(method = method, url = self.api_url + function, params = None, headers = headers, data = data)
             if response.status == 401:
-                raise InvalidApiKey
+                raise "Unauthorised"
             elif response.status == 400:
-                raise InvalidInput
+                raise "Invalid Input"
             elif response.status == 200:
                 content = await response.json()
                 return content
