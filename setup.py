@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="fivesimapi",
-    version="0.1",
+    version="0.1.6",
     author="Subrata",
     author_email="",
     description="A python Api wrapper of 5sim.net",
