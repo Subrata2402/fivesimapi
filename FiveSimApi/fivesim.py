@@ -15,10 +15,10 @@ class FiveSim(object):
             elif response.status == 400:
                 raise InvalidInput
             elif response.status == 200:
-                content = await response.text()
-                return json.loads(content)
+                content = await response.json()
+                return content
             else:
-                raise response.text
+                return response.text
         
     async def get_profile(self):
         """Provides profile data: email, balance and rating."""
