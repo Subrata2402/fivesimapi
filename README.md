@@ -48,4 +48,15 @@ await client.get_prices_by_product(product)
 
 # Returns product prices by country and specific product.
 await client.get_prices_by_country_and_product(country, product)
+```
+### Purchase
+```python
+# Buy activation number.
+await client.buy_activation_number(country, operator, product)
 
+# Buy hosting number.
+await client.buy_hosting_number(country, operator, product)
+
+# Buy again a old number.
+await client.re_buy_number(product, number)
+```
