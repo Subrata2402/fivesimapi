@@ -58,7 +58,7 @@ class NumberApi(object):
         return await self.fetch("GET", "/user/check/{}".format(id))
         
     async def finish_order(self, id):
-        """Finish a order by order
+        """Finish a order by order."""
         return await self.fetch("GET", "/user/finish/{}".format(id))
         
     async def cancel_order(self, id):
