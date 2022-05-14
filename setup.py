@@ -13,7 +13,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/Subrata2402/fivesimapi",
     #entry_points={'console_scripts': ['HQApi = HQApi.hq_api_cli:main']},
-    install_requires=['requests', 'lomond', 'PyJWT'],
+    install_requires=['aiohttp'],
     packages=["FiveSimApi"],
     python_requires='>=3.8',
     classifiers=[
