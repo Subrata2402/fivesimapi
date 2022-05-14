@@ -1,8 +1,8 @@
 ### FiveSimApi
-A modern, easy to use, and async API wrapper for 5sim.net in Python.
+A modern, easy to use, and async API wrapper for [5sim.net](https://5sim.net/) in Python.
 
 ### Installation
-Before proceeding, you should register an account on 5sim.net and generate a [Api key](https://5sim.net/settings/security) to use.
+Before proceeding, you should register an account on [5sim.net](https://5sim.net/) and generate a [Api key](https://5sim.net/settings/security) to use.
 
 ```pip install fivesimapi```
 
@@ -79,4 +79,39 @@ await client.ban_order(order_id)
 
 # Provides sms inbox list by order's id.
 await client.sms_inbox_list(order_id)
+```
+### Notifications
+```python
+# Get notifications.
+await client.get_notifications(language)
+```
+### Vendors
+```python
+# Return Vendor statistics.
+await client.vendor_stats()
+
+# Available reserves currency for partner.
+await client.wallets_reserve()
+
+# Provides vendor's orders history by chosen category.
+await client.vendor_orders_history(category)
+
+# Provides vendor's payments history.
+await client.vendor_payments_history()
+
+# Create payouts for a partner.
+await client.create_payouts(receiver, method, amount, fee)
+```
+### Countries List
+```python
+# Returns a list of countries with available operators for purchase.
+await client.countries_list()
+```
+### Others
+```python
+# Return rates of cryptocurrencies.
+await client.crypto_rates()
+
+# Return address to crypto payment.
+await client.get_deposit_address(amount, currency, address_type = None)
 ```
