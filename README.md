@@ -1,10 +1,6 @@
 ### FiveSimApi
-.. image:: https://img.shields.io/pypi/v/discord.py.svg
-   :target: https://pypi.python.org/pypi/discord.py
-   :alt: PyPI version info
-.. image:: https://img.shields.io/pypi/pyversions/discord.py.svg
-   :target: https://pypi.python.org/pypi/discord.py
-   :alt: PyPI supported Python versions
+<a href="https://pypi.python.org/pypi/fivesimapi"><img src="https://img.shields.io/pypi/v/fivesimapi.svg"></a>
+<a href="https://pypi.python.org/pypi/fivesimapi"><img src="https://img.shields.io/pypi/pyversions/fivesimapi.svg"></a>
 
 A modern, easy to use, and async API wrapper for [5sim.net](https://5sim.net/) in Python.
 
