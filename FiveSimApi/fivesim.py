@@ -43,12 +43,10 @@ class FiveSim(object):
         
     async def order_history(self, category: str, limit: str = None, offset: str = None, order: str = None, reverse: str = None):
         """Provides orders history by choosen category."""
-        #params = {"category": category, "limit": limit, "offset": offset, "order": order, "reverse": reverse}
         return await self.fetch("GET", "/user/orders?category={}".format(category))
         
     async def payment_history(self, limit: str = None, offset: str = None, order: str = None, reverse: str = None):
         """Provides payments history."""
-        #params = {"limit": limit, "offset": offset, "order": order, "reverse": reverse}
         return await self.fetch("GET", "/user/payments")
         
     async def product_details(self, country: str = "any", operator: str = "any"):
@@ -73,7 +71,6 @@ class FiveSim(object):
     
     async def buy_activation_number(self, country: str, operator: str, product: str):
         """Buy a activation number."""
-        #params = {"forwarding": forwarding, "number": number, "reuse": reuse, "voice": voice, "ref": ref}
         return await self.fetch("GET", "/user/buy/activation/{}/{}/{}".format(country, operator, product))
         
     async def buy_hosting_number(self, country: str, operator: str, product: str):
@@ -131,12 +128,10 @@ class FiveSim(object):
         
     async def vendor_orders_history(self, category: str):
         """Provides vendor's orders history by chosen category."""
-        #params = {"category": category, "limit": limit, "offset": offset, "order": order, "reverse": reverse}
         return await self.fetch("GET", "/vendor/orders?category={}".format(category))
         
     async def vendor_payments_history(self):
         """Provides vendor's payments history."""
-        #params = {"limit": limit, "offset": offset, "order": order, "reverse": reverse}
         return await self.fetch("GET", "/vendor/payments")
         
     async def create_payouts(self, receiver: str, method: str, amount: str, fee: str):
